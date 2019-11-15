@@ -1,5 +1,5 @@
 ######### LOGIN
-echo "password is s56uwUMpjhrs"
+echo "password is ********"
 ssh is5@178.236.129.66 -p 9911
 
 ###############
@@ -39,7 +39,7 @@ primercut.py -f GTGCCAGCMGCCGCGGTAA -r GGACTACVSGGGTATCTAAT -m 1 //home/is5/meta
 # Ssh tunneling for online rstudio server
 ##################
 
-echo "password is s56uwUMpjhrs"
+echo "password is *********"
 ssh -N -f -L localhost:8787:localhost:8787 is5@178.236.129.66 -p 9911
 
 # go to the browser and start local host
