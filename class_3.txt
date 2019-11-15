@@ -1,0 +1,7 @@
+1. There are a lot of different transcripts i.e. n is very large i.e. dimensions (more dimensions == less strange composition)
+
+2. Only  a few transcripts are differentially expresssed 
+
+In comparison with metagenomics. RNAseq has more stability as the cells are interacting in one way or other. 
+
+

@@ -1,0 +1,95 @@
+METAGENOMICS Day 1
+
+Microscopic ecology
+
+Typical modus operandii is symbiosis. Species act together to survive. Half of food intake we cannot digest.
+
+Two points about culturing:
+We are barely able to cultute 1 % of bacteria.
+Even if we are able to culture a single species. The speicie we culture is not the same as the one in it's  original niche.
+
+Steps:
+
+1.) Collect sample
+2.) Extract DNA
+3.1) or 3.2)
+
+3.1) Sequence everything: Shotgun sequencing
+3.2) Target sequencing: 16S 
+
+From a statistical viewpoint Shotgun is problematic. We are going to work with Target sequencing.
+
+
+Shanon Entropy:
+Coin flip = equal probability. WE don't get any new info.
+But for microbial sequencing, with extremem abundance, we have a multi-normal distribution. 
+Chances are extremely low that we get other sequence than the majority. So we miss out on the rare bacteria.
+
+
+We somehow tranfer info about 16S with taxonomic info. Called Taxonomic annotaion.
+
+
+16S contains conserved and variable regions. Best miseq give upto 300 reads (600 in total from paired end). So we try to do our best with region selection. Amplicon library (usually V3, V4 in 16S).
+
+
+Chimeras in sequencing: If we have a DNA sequence with a primer during PCR. But aberrant termination leads to an incomplete seq. In this case we are left with a short piece of ampliefied DNA from Species A. This piece can attach to another DNA strand and amplify. Thus it carries properties of both Species A and B. Such a sequence is called a chimera (like the Chimera of the sea, which are inbetween bony fishes and cartelegious fishes, or Chimeras during meiosis where different strands exchange materials).
+
+PCR is not exactly exp. It depends a lot on the thermodynamics. Templates from diff. species have different binding efficiency. So sometimes the complexity is reduced, because of competetive selection, an entire line of sequences may get eliminated (they are present in trace amounts).
+
+We reconstruct the taxonomics structure, accounting chim
+eras, primer bias, and errors. We use OTU picking (clustering). The centroids obtained should represent the original profile.
+
+	A	B	C	....N
+A	[ Distances ]
+
+B
+
+C
+.
+.
+.
+
+N
+
+Similar bacterial species are closer in distance to each other then to a distant one.
+
+But this has a crazy O(n^2).
+
+Triangle inequality does not apply, so we don't have nice matrix spaces. It depends on initial point, thus not entirely derterministic. And species differing with 1% come closer. This is like clustering Salmonella and E. Coli together. Which is not an entirely correct thing to do. 
+
+Also, sometimes overestimation of clusters happen. Instead of the intuitive underestimation of the clusters. (Good people don't do this.)
+
+So we use denoising as a method for clustering.
+
+The new way:
+
+1.) Cut primers
+2.) We remove poor sequences. But it is more like denoising. Two steps: a.) Error model estimation b.) Error correction
+
+We get ASV (Amplicon Sequence Variant) as an output to this step. It's a haplotype (unique DNA sequence).
+
+3.) Pair stitching: Bringing pairs together
+4.) Chimera removal
+
+5.) We get ASV count table
+
+____
+
+6.) Finally we do Taxonomic annotation. (Upcoming class)
+
+_______________________________________________________________________________________________________________________
+
+##################################
+# Let's go through steps 1 to 5. #
+##################################
+
+Roshe used to make a new INDEL errors. Ion torrent is similar to Roshe 454 (pyrosequencing). Such is the problem with Illumina data as well.
+
+
+
+
+
+
+
+
+

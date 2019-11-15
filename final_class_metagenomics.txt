@@ -1,0 +1,194 @@
+A basis is a leniarly independent spanning set.
+
+The standard basis is a set of orthornormal basis. It is a basis of a cartesian coordinate set.
+
+An Atchison Simplex cannot have 0's in compositional data. 
+
+A set of all leniar combination of spanning space is the base itself, but the same is not true for an Atchison space.
+
+However, we can apply closure by taking element wise exponentials of every vector in the vector space.
+
+The spanning set is not minimal. It gives a way to represent vectors as coeff. vectors. Since we have a rep. like this, it is not a unique representaion. It is just leniarly indepenedent. We can do a lot of things to the coeff.s. If we take lambda = GM then we have a CLR transformation.
+
+CLR vector is a vec of coeff. w.r.t. to a non-minimal set. It has some good properties, e.g. CLR translates algebraic strs. to match. It makes it an isometry.
+
+We also discussed isometric transformation is (just some abstract things). When we have a non-minimal space, it is suff. to remove any one vector and get a basis (not necessarliy orthonormal). To get orth.norm. basis, by apply orthogonalisation (Gram Smith/ Singular value decomp/ Eigen-value decomp). Dividing each vector by it's norm.
+
+
+We get contrast matix, ILR coordinates (w.r.t. a basis), are simply given by this transformation (a change of basis representation), we enforce a basis onto a vector. THat represents a latent basis. We drop the CLR and we only need to calculate the logs. Psi is a vector of CLR vectors, since coeff.s are degenerate.lambda is equal to GM here. The inverse is the same as CLR, only that we need to redo the transformation. It is isomorphism, isometry. Basically, if CLR is a mapping between simplex and some subspace within in d-1 dimension of real vectors.
+
+ILR is a true transformation in this sense. It is not entirely intuitive, we can have any number of basis.
+
+We can construct psi not using abstract mathematical way, but sequential bipartition.
+
+______
+#####################################
+# Prelude
+#####################################
+
+#####################################
+# How to construct a bipartition?
+#####################################
+
+#####################################
+# How to handle zeroes
+#####################################
+
+PCR is a discrete-time process parametrised by initial template counts. We log-leniarize the eqn.
+
+When we have a multi-temp PCR, some components go faster or slower than others.
+
+WE have thus perturbation in a vector sense.
+
+Usual wisdom, 'yeah dis da problem, but across all communities is not a problem, because biases cancle out'
+
+During PCR we extract the libraries, many cycles, multiple replicates. We have to model this process.
+
+First, we need to see if models fit data well.
+Second, is there association between numbers and some properties of the data. [i.e. lambda are invariant of the str. of the data itself]
+
+WE don't actually see real absolute-counts. We just have in the end, a compositional vector. We only know thus, relative proportions. We thus need to understand how relative proportions change. WE can do this in ILR.
+
+We take any rooted binary tree. Each node is a balance, which contains a +ve part (numeratior) and a -ve part (denominator). We create a matrix called 'phi' of n-1 dimensions which contains 3 valves -1 [tip belongs to left], 0 [if it belongs to some other node], 1 [right]. 
+
+We can use any matrix like this. Also, we define a 'contrast matrix', this is the same as 'psi' in ILR. We need to transform the values. 
+
+If we take an individual balance. This contains k [scaling procedure; to transform the bipartition into the contrast matrix], a ratio of logs of GM [all parts into + / all parts into -]. Then  with some algebra to transform into some log ratio.  And get result for b_i(t). {composition + perturbation vector applied to this composition}
+
+To sum up, we start with initial comp., then we come up with what to add to it to. 
+
+Now, we have a series of time stamps. WE have defined them as non-compositional data. We can use comp. data analysis to analyses to anayles non-comp data but the reverse is not true. All cardinal data have relative info, that can be used freely. What determines our imbalances (bias), the coeff. of efficiencies. [fun  biology observation]. 
+
+
+
+#####################################
+# How to model it
+#####################################
+
+How to model this? Human/ soil/ ocean microbiome we get 50-100 ASV's. We need classical regression that requires us to have atleast as many data points. WE need to have a threshold of components, otherwise the system becomes unsolvable. To get around this limitation, we don't apply vanilla decomp. {Also we need tons of replicates, b/c of batch affects}. To get around this problem we use bayesian inference, we have a logistic model with L1 regularisation. Basically, priors introduce some prior knowledge about the model, 2 effects, 1.) if we have specific knowledge, the model searches a sub space parameterised by some density, 2.) we apply regularisation, in a nutshell, we have data X and parameters with prior. The parameters come from some distribution. We get some likliehood under some parameters. Since, in stats we deal with log likelihoods {[mult. becomes addition]}.
+
+
+Dirichlet prior? We can treat comp. data as something from a multinomial distribution. {prob mass function: for discreet, prob dens function: for continuous data: gamma approximates derivative __ factorial function}. WE have no way of controlling the variance in a multinomial dist. {in norm. dist we have exp and variance}, by extension we don't have covar. WE cannot control it as a pramenter. To do so, we extend this as a continuous case which is a dirichlet dist. The sum of all freq. in a multinorm dist is 1.
+
+An informative prior is a prior that greatly limits the sample space. 
+
+Why do we need a Dirichlet dist. to deal with 0? We use it as a heuristic, in the sense that, if we have a vector of values. 
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+import numpy as np
+np.random.dirichlet?
+
+counts = np.array([100, 200, 300, 0])
+freqs = counts/ counts.sum()
+
+freqs
+
+np.random.sample(np.array([100, 200, 300, 0]))
+
+# we get a vector of frequencies, if we have fewer counts, the variance will be greater. 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Coming bact to the problem of introduction of pseudo counts and thus distortion, we have less confidence in results based on the scale. From bayesian perspective, variance is the confidence in a result. The larger the value, the less variance we get [heuristic, we get counts from a seq machine; we add non-informatic priors with almost inf. variance].
+
+If we have different str.s of the sample. Imagine, we estimate freq. parameters, we get non informative priors. If we get an informative prior ,we introduce bias. 
+
+{Deep learning is matrix operations, with some non-leniarity. It is just leniar algebra on drugs.} Theano package is the precursor of Tensor flow. It uses symbolic graphs. Integrals are difficult to get analytically, we use Laplace-approx., Markov chain Monte Carlo (the most accurate). By extension, MCMC is the most expensive way to do that. If we have large datasets, we use Variational Influence.
+
+[block 13 of modelling.ipynb]
+Instead of converging to parameter, we converge onto a dist. of parameters with posterior probs. The parameter can vary a lot. The fastest and efficient way of MCMC is Nuts (hamiltonian-MC, it requires a gradient to make informed steps, which is why it converges faster). Thus, PyMC uses Theano, which uses automatic diff. We can use reg. arithemetic operators as long as it doesn't interferes with differentiation.
+
+We have expectations calculated, and priors. We have prior alpha, we sample directly. We use half normal sigma, which we truncate at 0, the normal distribution and finally we have a prior for betas (efficiencies in beta dist., it is the same as 1-D special case of Dirichlet dist.)
+
+Sigma is the diagonal cov. matrix (we assume that there are no interaction between the components, this is not necessarily true). 
+
+[block 14]
+
+We sample using Hamiltonian MC, we tune, and run the process. In our case, it runs about 5 minutes. 
+
+We run the same process multiple time, this is used to control the divergence. We look at the values of different parameters. We have 134 lambdas and basically we have sigmas, SDs of the parameters (expectation on the parameters/ i.e. how certain the model is). This is partally explains, that we don't have sample not large enough. This takes an hour to compute on 20 cores.
+
+[block 22]
+We look at the variation on parameters.  We see that lambdas have converged extremely well, which is the onlay thing we care about for most of the part.
+
+[block 23]
+Now we try to infer the same data we used to train the model.
+
+We use a posterior preditive distribution. There are 2 kind of these: 1.) simple post dist (dependent on the data, what can we predict just based on the priors) 2.) independent on the data
+
+[block 28]
+
+The dynamics of taxa/ phyla. How these change from cycle to cycle. 
+In block 29, we have a summary of phyla in observed and predicted data.
+
+In the observed data, we have the dynamics that Actinobacteria increase slowly, bacteriods increases rapidly. Our model represents the smoothed out version. By taking tons of samples, we reduce the standard error (error of the mean).
+
+[block 48]
+
+We now try to extrapolate the results, we sample the model. We can see that PCR dramatically changes the composition of the sample (if the model is correct). This example is remarcable, because for a long time Biologists thought that the phyla increased the most Bacteriods. When metagenomics started, people suddenly found out that there are tons of bacterioids. They tried to understand and found out that perhaps there are not so many, and only PCR bias. [block 50]
+
+[block 51]
+
+
+How well the change is reconstructed by our model? We can approx the dist of log rations. Each sample contains a certain amount of ASV's. For eachnof these we calculate the log ratios at different time points. We sample this and calculate the distribuution between the median of all samples. We use bootstapping to estimate the confidence intervals for these correlations. Bootstrapping is another (like MCMC, by mathematical procedures) way (not mathematical), to deal with data, if we have no other rigorous way of dealing with uncertainatiy. We estimate the confidence intervals, random number generator, ratios from expected and observed data.
+
+
+[block 56] is about bootstarpping.
+
+We have an expectaiton of the corr. between the medians between 0.543. Our confidence interval is closer to the values. And we have a lot of variation on hte right. What we can see is, how we used the bootstrap compostion. At different subcompostions we have extremely good subcompositons. Out model works, more or less fine in some case. We obs. the probability of obs. random.
+
+[block 71] plotting the lognn rations from 35 cycles (given the number of cycles to calculate the number of cycle)
+
+These ratios are calculated for log base = 2. 
+
+
+We thought that the efficiencies of amplication can be effected by: GC (controls all DNA/RNA values, the formation of secondary structures; higher GC, increases the melting temp), primer seqs and abundances.
+
+Some rarely abundant stuff is far more effeciently amplified, at some point it outruns, and so we can see curved lines with ups and downs in the simplex-representation.
+
+Primer regions in the amplicon regions are the primers themselves. WE can use similarity betwen the seqs themselves to estimate the primers. WE just compare the lambdas. 
+[block 74 text]
+
+WE calculate the GC content, we run our model. We use the package called 'robust' for robust LM (robust ot outliers).
+
+Negative corre. means that higher the initial abundance implies a bias in amplification. 
+
+
+[block 119]
+mantle test is to test the similarity between two matrices. it does this by permutaion in the matrices, and calculate the distribution of the corr. Then finally, we get where the corr. is.
+
+We do the mantle test and differences in log lambdas. The outer operations come from scipy. We calculate a pairwise matrice. (a generalisation of the outer product). 
+
+[block 108]
+
+If validation data is expensive (extra batch). We can use a third option i.e. simulation.
+
+[back to 119]
+
+The way we defined PCR in the previous class. WE have initial conc. and some exponential growth. We assumed 3 things:
+###
+
+We use a different approx. (see secret.ipynb) to get a better approx. of PCR. In this way we get rid of the problematic initial concentration (the more realistic approx.). NA deconstructs into 3 balances and not into 2 balances.
+
+What is the benifit of ILR? We can exploit a fine equivalent transformation. All the leniar transformation transfer well from one space to another. The result remains the same, it helps us to simplify the mathematical reasoning. 
+We test our hypotheses, multiple ways, and get results which provide strong evidence that there is some dependenes on starting concentrations. Thus even PCR baises are not tranfererred uniformly across the samples.
+
+1.) How can we confortable work with PCR data.
+2.) Now we are exposed to bayesisan inference
+3.) To demonstrate at least some of 0 replacement strategies
+There is another reason why we did all this. Prof. believes that in stats course, we were taught to do different tests and pray on the p-value.
+Here we are not at the mercy of p-values. When we follow the logic of testing, we are just testing a trivial hypothesis, null hypothesis. This hypothesis is weak, all it tells is that we don;t have a hypothesis. We don't say what is the difference. When we do it multiple times we're just doing the multiple correction. The real way to correct a trivial hypos. is to correct for all possibple configuration of the data we could have done and not jsut for the test we have done.
+
+An alternatively, from physicist way of thinking, we no longer care about t-test. We test hyp. directly using models. We work in terms of models.
+
+
+Phylogenetics, pop gen etc. have strong models within them and we test specific hypotheses (and not trivial ones). 
+
+
+We use latent compostions to deal with 0's because Dirchlit dist.s can't work with 0's. We hide the compositional part deep inside the model. We add a multinomial dist within the model, and then what we get is that the Dirchlit handles null containing data. It is enough to keep in the mind, that we can use compositions as latent things. This is a specific case in teh sense that we simply use a multinomial to take care of 0. This way we can also deal with structural 0's. Thus we can do any kind of crazy things such as compositions of higher or lower dimensionas of the data. 
+
+In short, we can do a compositional backend. The model can decide which part better describe which parts of the sample are structural 0's.
+
+########################################
+
+That's all folks!

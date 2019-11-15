@@ -1,0 +1,241 @@
+alpha, beta and gamma diversities
+
+alpha diversity is the numerical representaion in a samples.
+
+We have a group of sample representing in a community. If we have a bunch, we have a dristribution of alpha diversity.
+
+The diversity indeices can be seperated into two kinds:
+
+1.) Richness: not concerned with distribution of species.
+
+e.g. we have a sample from microbial community. This measurement is about the total number of species found.
+
+There are also other ways:
+
+Let,
+
+X = x1 + x2 ... xn
+
+ASV (Amplicon Seq Variance) or OTU. Some kind of count representation of the bactrial taxa.
+
+In the simplest case,
+
+Richness would be the sum of x > 0.
+
+We simply all the non zero observations.
+
+From the principles of compositional data analyses,
+
+i.) Scaling invariance, and ii.) subcompositional coherence
+
+There are many types of richness measures: Absolute richness (the one we just looked at), Child index (google it)
+
+Richness indices are insenstive to frequencies (distribution of counts)
+
+Q.) Can alpha diversity indices be scale invariant?
+
+i.e. if we have f(x), it is invariant under the multiplication of arguments.
+
+ In an ideal world without technical zeroes, (rounded or structural zero (something is actually not there and not because of technical zeroes)). In practice it does not hold true.
+
+
+ii.) Subcomp coherence: if we have a subset of x < or > then f(x)
+
+
+Richness indices are not very intresting. So people use other kind of indices:
+
+2.) Eveness indices:
+
+The most commonly used is Shannon's entropy.
+
+Shannon's entropy: how much information is contained in a message
+
+E(x) = -(sigma i one to n F(xi).log[f(x)])
+
+Take for example the coin flip. Basically that is one dimensioal problem.
+
+The shannon entropy for this case would be: 
+
+
+Shanon's entropy is dependent on information theory. It is mathematically and intuitively related to Boltzmann entropy.
+
+
+If we change the probabilities of coin flips away from equilibrim. The Shannon's entropy decreases because we already expect 'something' as a result.
+
+In case the coin is biased that we get no tails. This means that entropy is also zero because we get almost no information from such a coin flip.
+
+
+Shannon's indices are calculated on actual counts and not on probabilities. 
+
+
+Shannon's diversity is not scale invariant (this is usually biologists use).
+
+
+When we take a subcomposition something can either stay the same or decrease.
+
+
+There are also Simpson's index, the Generalised Diversity index etc. Most indices are just special cases of the Generalised Diversity index.
+
+The ultimate result depends upon what subcomposition we decide to take.
+
+We can use different tests upon responses of alpha diversity. We need to be aware that alpha diversity is infact is not subcompo. coherent. There are some factors involved that are subcomposition dependent.
+
+Let's say we want to associate plant, soils and micorbiomes. If we take some subcompositon, depenedent upon the subcompo. we will have different kind of plants. e.g. maybe Barley increases diversity with respect to wheat or vice versa. It is the major cause of irreproducibility of reasearch.
+
+Nowdays these analyses are not used. Because these are metaanalyses (communities are studied as a measurable thing and not individual cells inside the community).
+
+_______
+
+Another richness index Faith's phylogenetic diversity index (PD). 
+Let's say we have some communities
+A	B	C
+-	-
+Counts(a1... an)	Counts(b1 ... bn)...
+
+And we make a phylo tree
+
+_[ (branches of A)
+	[ (branches of B)
+-------
+
+What we can see is that we just summed the lines of all branches for one or another sample.
+
+This is still a richness index (we don't care about freq). But the difference is that here, the intuition is that when we have multople closely related bacteria we don't weigh them relatively.
+
+basically we have a situation like this:
+
+Here we don't count leaves but branches.
+
+[image 1]
+
+We may overestimate in this case. (edges are called branches in phylogenetics)
+
+||||| Each bacterium is a leaf on the tree. If we simply consider sum, we say that all leaves equally contribute. But they don't have much genetic diversity. Thus we count the sum of lengths of branches that are observed within the sum! |||||
+
+As we can see that this is not subcomp. coherence.
+
+_______
+
+Let's move on to something more complicated:
+
+Beta diversity: the distance between samples (communities). It is not distance in a strict mathematics sense.
+
+In the dumbest cases, the Jaccard index between two samples is simply the size of intersection between two samples divided by the union.
+
+jaccard (a, b) = intersect(a, b) / union(a, b)
+
+It is not used a lot beacause it is independent to the actual distributions. If we have two communities with differently distriibuted taxa, it is not considered as a seperate.
+
+* As opposed to that Unifrac is used a lot!
+
+It is similart to PD (Faith's). We have a phylogenetic tree and two samples a and b. In case of unweighted unifrac, we simply colour the branches observed in one samples and similary in other samples. And then we calculate the ratio between sum of shared lengths by sum of all branches in the tree.
+
+
+Sum of length of shared branches / sum of all branches 
+
+
+
+[image 2]
+
+
+
+
+_______
+
+Let's return to mathematics now.
+
+
+
+_____
+
+
+1.) We need two files:
+
+a biom file (sample, taxa metadata, and counts)
+
+We use the counts from data denoising
+
+And phylogenetic tree....
+
+We prune the tree and remove the tips
+
+
+We remove ref. sequences.
+
+
+We make OTU table and in different factors. We export the biom tree.
+
+We have a biom table, a tree.
+
+We use R and python side by side. We need rp2. package for two-way compatibility.
+
+______
+
+
+L1 and L2 regularisation of models
+
+Priors in bayesian modelling:
+
+
+let 
+y= a1x1 .... anxn + e
+
+these are predictors
+
+the effect is controlled by the coefficients
+
+If we allow the model to select any kind of alphas, the model will try to overfit
+
+We need to control alphas --- this is done by regularisation (from the bayesian perspective) -- we say that alphas have some gaussian distribution -- in this case it is L2 or rich-regression or euclidian norm
+
+From ML perspective it is just L2 (eucledian norm)
+
+Another perspective is that we that alpha has a cauchy distribution
+
+Most of the probability density is around 0 and quickly diminishes to infinity
+
+Kullback-Lieblar divergence (related to shanon entropy). We measure the amount of info lost between two distributions/ It is not symmetric
+
+KL(P|Q) 
+
+Coeff should be sampled from these distributions. We get alphas fromt he model and our 'loss' function
+
+loss(y, y_hat) + KL(alpha, alpha_hat)
+
+if the dist. divergence diverges from the prior. From LA point of view we do
+
+##################################
+loss(y, y_hat) + lambda||alpha||
+##################################
+
+We add norm of the coeff vector ||alpha||
+
+So L1 forces the model to slect as few predicters as we can. So we have a parameter called lambda that controls the regularisation. 
+
+This control is called sparcity level. Since it controls how many coeffs can be 0. Lambda controls the sparcity (how many 0 are there) level.
+
+_____
+
+We use glmnet package for regularisation.
+
+Experiment Design
+_____
+
+Phylogenetic trees as balancing structures:
+
+GM is the log of AM
+
+In GM the problem is that we don't understand the contribution to the average in a clade.
+basically the nodes of the phylogenetic tree represent the GM of the given clade.
+
+
+There will be a lot of mutual information between memebers of the nodes. The varaince gets smeared all around the tree when we are comparing distant members of the tree. 
+
+(Balances around the tip are easy to interprete)
+
+We use this even because of this drawback... because we can use all our methods we are familiar with with this kind of tree.
+
+With ILR, there are many problems with interpretation of the tree.
+
+_____
+[Principle balances on the other hand try to find the direction (a vector inside ILR space). ]

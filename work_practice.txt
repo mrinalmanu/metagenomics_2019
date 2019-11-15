@@ -1,0 +1,113 @@
+######### LOGIN
+echo "password is s56uwUMpjhrs"
+ssh is5@178.236.129.66 -p 9911
+
+###############
+
+# creating a new virtual shell detached from the oriignal process
+
+tmux new -s test
+
+tmux -ls # shows all the processes
+
+ 	
+
+# all the process are preserved unless the session is killed
+
+conda activate students
+
+# we will work in students environment
+
+
+ln -s $(realpath /home/is5/course/one/raw) $(realpath raw)
+
+# we didn't have permission so we symlinked the raw folder to our folder
+
+###
+STEP 1
+###
+
+Take samples from raw. Remove the primers and append to the data. This is the normalisation step.
+
+primercut.py -f GTGCCAGCMGCCGCGGTAA -r GGACTACVSGGGTATCTAAT -m 1 //home/is5/metagenomics/raw/raw/S100* //home/is5/metagenomics/noprimer/S100_fwd.fastq //home/is5/metagenomics/noprimer/S100_rev.fastq
+
+# Output: Successfully normalised 80034 (88.6%) pairs out of 90352
+
+
+# Now we ssh tunnel with rstudio
+##################
+# Ssh tunneling for online rstudio server
+##################
+
+echo "password is s56uwUMpjhrs"
+ssh -N -f -L localhost:8787:localhost:8787 is5@178.236.129.66 -p 9911
+
+# go to the browser and start local host
+
+
+##### if this doesn't work then on the server we create a file called 'tunnel' with the following contents
+
+function ssh-tunnel() {
+    if [ -z "${1}" ] || [ -z "${2}" ]; then
+        echo "typical usage: tunnel machine-address remote-port [local-port]"
+    else
+        kill $(ps aux \
+               | grep "ssh -N -f -L localhost:${2}:localhost:${3-${2}} ${1}" \
+               | awk '{print $2}') &> /dev/null
+        ssh -N -f -L localhost:${2}:localhost:${3-${2}} ${1}
+    fi
+}
+
+export -f ssh-tunnel
+
+#######################################
+
+# And then create a config file with the following contents:
+
+#########################################
+
+
+Host mrinal
+    Hostname 178.236.129.66
+    Port 9911
+    User is5
+
+
+########################################
+
+And then:
+
+cp config ~/.ssh
+
+# Then we source the tunnel file
+
+source tunnel
+
+ssh-tunnel mrinal 8787
+
+# It should work now.
+
+##
+## It didn't work :(
+##
+
+
+### Let's install Putty on Ubuntu
+
+https://itsfoss.com/putty-linux/
+
+######################################### Okay, that didn't work. Let's revist.
+
+# Let's kill all the process that might be using the tunnel
+
+ps aux | grep ssh
+
+kill <process_name>
+
+ssh -N -f -L 127.0.0.1:8787:127.0.0.1:8787 is5@178.236.129.66 -p 9911
+
+## FINALLY! :))
+
+###########################################
+
+
