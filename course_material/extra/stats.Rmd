@@ -1,0 +1,218 @@
+---
+title: "Rhizosphere project models"
+output:
+  html_document:
+    fig_caption: yes
+---
+
+Load dependencies and set the working directory
+
+```{r message=FALSE, warning=FALSE}
+
+library(phyloseq)
+library(phytools)
+library(philr)
+library(ape)
+library(glmnet)
+library(ggplot2)
+library(ggrepel)
+library(dplyr)
+# library(broom)
+library(broom.mixed)
+library(tidyr)
+library(reshape2)
+library(car)
+library(ggfortify)
+library(latex2exp)
+library(ggtree)
+
+set.seed(139)
+
+# custom functions for data manipulation, exploration and model fitting
+source('stat_util.R')
+```
+
+### Data preprocessing and primary exploration
+
+Parse the BIOM table, remove rare taxa, process the tree and transform the data using ILR
+
+```{r message=FALSE, warning=FALSE}
+# we add pseudo-counts to remove zeros
+data <- import_biom(BIOMfilename='stats/table.biom', 
+                    treefilename='stats/tree.nwk',
+                    parseFunction=parse_taxonomy_greengenes) %>%
+    transform_sample_counts(function(x) x + 1)
+
+# binarise the tree and rename internal nodes
+phy_tree(data) <- makeNodeLabel(
+    multi2di(phy_tree(data)), method='number', prefix='b'
+)
+
+# what is the root node
+name.balance(phy_tree(data), tax_table(data), 'b1')
+
+# transform all samples (including bare soil samples) for visual inspection
+# note: we've disabled weighting (by setting weights to 'uniform'), therefore this is canonical ILR.
+transform.wcontrol <- philr(
+    t(otu_table(data)), 
+    phy_tree(data), 
+    part.weights='uniform', 
+    ilr.weights='uniform'
+)
+
+write.table(transform.wcontrol, file='stats/ilr_all.tsv', sep='\t',
+            col.names=NA, quote=FALSE)
+```
+
+Explore transformed data through ordination
+
+```{r}
+pcoa <- ordinate(data, 'PCoA', distance=dist(transform.wcontrol, method='euclidean'))
+(plot.pcoa <- plot_ordination(data, pcoa, color='plant', shape='soil') + 
+    geom_point(size=3) + 
+    theme(text=element_text(size=11,  family='Helvetica')) +
+    theme_bw() + 
+    scale_color_brewer(palette='Pastel1'))
+dir.create('plots', showWarnings = FALSE)
+ggsave(file='plots/pcoa.svg', plot=plot.pcoa, width=7, height=5)
+```
+
+### Analyse Soil and Plant effects
+
+We will remove control bulk soil samples and rerun philr transforms
+
+```{r message=FALSE, warning=FALSE}
+
+# subset data
+data.wplant <- subset_samples(data, sample_data(data)$plant != 'Control')
+
+# extract observations, tree, taxonomy and metadata from the phyloseq object
+observations.wplant <- t(otu_table(data.wplant))
+tree.wplant <- phy_tree(data.wplant)
+taxonomy.wplant <- tax_table(data.wplant)
+meta.wplant <- sample_data(data.wplant)
+
+transform.wplant <- philr(
+    observations.wplant, 
+    tree.wplant, 
+    part.weights='uniform', 
+    ilr.weights='uniform'
+)
+
+# add metadata to transforms
+transform.wplant.wmeta <- as.data.frame(transform.wplant)
+transform.wplant.wmeta$soil <- meta.wplant$soil
+transform.wplant.wmeta$plant <- meta.wplant$plant
+transform.wplant.wmeta$cultivar <- meta.wplant$cultivar
+transform.wplant.wmeta$group <- paste(meta.wplant$plant, meta.wplant$soil, sep='@')
+```
+
+Select `plant`-separating features
+
+```{r dpi=500}
+# cross-validation for l1 lambda parameter; standardise data before running cross-validation
+cv.plant <- scale(transform.wplant) %>%
+    cv.glmnet(meta.wplant$plant, alpha=1, family='binomial', type.measure='class')
+
+write.table(tidy(cv.plant), file='stats/cv.tsv', sep='\t', quote=FALSE, row.names=FALSE)
+
+(plot.cv <- autoplot(cv.plant) +
+        xlab(TeX('$\\log(\\lambda)$')) + 
+        theme(text=element_text(size=11,  family='Helvetica')) +
+        theme_bw())
+
+ggsave(file='plots/cv.svg', plot=plot.cv, width=8, height=4)
+```
+
+```{r}
+# extract balances (features) with non-zero coefficients at the highest lambda within 1SE from the CV optimum
+features.plant <- select.features(coef(cv.plant, s='lambda.min'))
+features.plant
+```
+
+Plot feature distributions
+
+```{r}
+transform.wplant.long.plant <- transform.wplant %>%
+    convert_to_long(get_variable(transform.wplant.wmeta, 'group')) %>%
+    filter(coord %in% features.plant)
+
+# consider openning the plot in a separate RStudio tab
+ggplot(transform.wplant.long.plant, aes(x=labels, y=value)) +
+    geom_boxplot(fill='lightgrey') +
+    # scale_y_continuous(trans=signed.log1p.transform) +
+    facet_wrap(.~coord, scales='free_x', ncol=5, nrow=8) +
+    xlab('Group') + ylab('Balance') +
+    theme_bw() + 
+    theme(axis.text.x=element_text(angle=90, hjust=1)) + 
+    coord_flip()
+```
+
+Extract feature metadata (i.e. balance name votes)
+
+```{r}
+names.numerator <- extract.balance.names(tree.wplant, taxonomy.wplant, features.plant, 'up', 0.9)
+names.denominator <- extract.balance.names(tree.wplant, taxonomy.wplant, features.plant, 'down', 0.9)
+
+# extract balance taxonomy
+names.flat.long <- pack.balance.names(names.numerator, names.denominator, paste0('Rank', 4:7))
+
+write.table(names.flat.long, file='stats/balances.tsv', sep='\t',
+            col.names=NA, quote=FALSE)
+```
+
+Fit mixed models and select models with normally-distributed and homogeneous residuals
+```{r}
+
+models.plant <- fit.mixed.models(
+    data=transform.wplant.wmeta,
+    responses=features.plant,
+    'plant  + (1|cultivar)'
+)
+models.plant.validated <- models.plant[validate.residuals(models.plant, as.factor(transform.wplant.wmeta$plant), 0.2)]
+```
+
+We will now aggregate random factor intercept variance along with fixed factor coefficients and remove some unnecessary terms.
+```{r}
+
+disambiguate.terms <- function(df) {
+    df$term <- ifelse(is.na(df$group), df$term, paste(df$term, df$group, sep='_'))
+    df
+}
+
+models.plant.summary <- suppressWarnings(
+    plyr::ldply(models.plant.validated, tidy, .id = "model") %>%
+    disambiguate.terms %>%
+    select(-c('effect', 'group', 'std.error', 'statistic')) %>%
+    spread(term, estimate)
+)
+
+row.names(models.plant.summary) <- strsplit(as.character(models.plant.summary$model), ' ~ ') %>%
+    sapply(function(x) x[1])
+
+names(models.plant.summary)
+```
+
+
+```{r}
+selected.terms <- c('(Intercept)', 'plantWheat', 'soilDP', 'sd__(Intercept)_cultivar', 'sd__Observation_Residual')
+models.plant.summary.clean <- models.plant.summary[selected.terms]
+
+write.table(models.plant.summary.clean, file='stats/models.tsv', sep='\t',
+            col.names=NA, quote=FALSE)
+```
+
+```{r}
+tree.annotation <- data.frame(
+    balance=features.plant,
+    validated=features.plant %in% row.names(models.plant.summary.clean),
+    size=rep(3, length(features.plant))
+)
+
+(plot.tree <- ggtree(phy_tree(data)) %<+% tree.annotation +
+    geom_nodepoint(aes(color=validated, size=size), alpha=0.5) +
+    scale_color_brewer(palette='Pastel1') +
+    theme(legend.position='right'))
+
+ggsave(file='plots/tree.svg', plot=plot.tree, width=10, height=8)
+```

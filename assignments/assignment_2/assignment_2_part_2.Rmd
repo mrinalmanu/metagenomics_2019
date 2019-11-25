@@ -1,0 +1,293 @@
+---
+title: "assignment_2_part_2.Rmd"
+author: "Mrinal Vashisth"
+date: "10/24/2019"
+output: html_document
+---
+
+```{r}
+# All imports
+
+library(dplyr)
+library(tidyr)
+library(Biostrings)
+library(DECIPHER)
+
+setwd('/home/is5/assignment_2')
+
+```
+
+```{r}
+####################################################
+# Grouping taxonomies                              #
+####################################################
+# Load all them fasta sequence
+
+fastax <- read.table("~/assignment_2/output/taxon_fasta_after_silva_processing.fasta", quote="", comment.char="", na.strings="", stringsAsFactors=FALSE)
+
+dat <- fastax
+toDelete <- seq(1, nrow(dat), 2)
+ids <- data.frame(dat[ toDelete ,])
+
+ids$dat.toDelete... <- sub(">", "", ids$dat.toDelete...)
+
+# Load all them fasta sequence
+
+fasta <- read.table("~/assignment_2/output/taxon_fasta_after_silva_processing.fasta", quote="", comment.char="", na.strings="", stringsAsFactors=FALSE)
+fasta <- data.frame(fasta)
+
+# Drop rows containing '>' symbol
+fasta <- fasta %>% 
+  filter(!grepl('>', fasta$V1))
+
+# Join ids column and sequence column
+
+silva <- data.frame(fasta$V1, ids$dat.toDelete...)
+colnames(silva) <- c('seq', 'id')
+
+
+# load taxonomic annotaiton
+
+annotation <- read.delim("~/assignment_2/output/cleaned_taxonomy_file_after_silva_processing.txt", header=FALSE, stringsAsFactors=FALSE)
+annotation <- data.frame(annotation)
+colnames(annotation) <- c('id', 'info')
+
+
+# combine the two dataframes for shared column V1
+
+silva_df <- data.frame(merge(silva, annotation, by="id", type="inner"))
+
+
+# Seperate annotaion info into seperate 
+names <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species", "Root")
+
+
+info<-data.frame(do.call('rbind', strsplit(as.character(silva_df$info), ';', fixed=TRUE)))
+info$root <- c('Root;')
+colnames(info) <- names
+info$id <- silva_df$id
+
+
+df <- merge(silva_df, info, by = "id", type = 'inner')
+
+##
+rm(fasta, ids, toDelete, fastax, dat, silva, annotation)
+
+```
+
+```{r}
+summary(info)
+```
+
+Indeed there is still some duplication.
+
+```{r}
+
+####################################################
+# Remove duplicates                                #
+####################################################
+# Remove duplicated rows based on 
+# genus and species
+
+df <- df %>% 
+  distinct(as.character(df$Genus), as.character(df$Species), .keep_all = TRUE)
+
+df$`as.character(df$Species)` <- NULL
+df$`as.character(df$Genus)` <- NULL
+
+# Final file should look something like this for the sake of DECIPHER
+# 
+# >GY187501.2.1421 Root;Bacteria;Epsilonbacteraeota;Campylobacteria;Campylobacterales;Helicobacteraceae;Helicobacter;unidentified
+# GCAAGUCGAACGAUGAAGCCUAGCUUGCUAGGUUGAUUAGUGGCGCACGGGUGAGUAAUGCAUAGAUGACAUGCCCUUUA
+# GUUUGGAAUAGCCACUAGAAAUGGUGAUUAAUACCAAAUACUACCUUACGAGGGAAAGAUUUAUCGCUAAAGGAUUGGUC
+
+Xfasta <- character(nrow(df) * 2)
+Xfasta[c(TRUE, FALSE)] <- paste0(">",df$Root,df$Kingdom,";",
+                                 df$Phylum,";",df$Class,";",df$Order,";",
+                                 df$Family,";",df$Genus,";",df$Species)
+Xfasta[c(FALSE, TRUE)] <- paste0(df$seq)
+
+# Taxonomic annotaion upto genus only!
+taxonomic_annotation <- paste0(df$Root,df$Kingdom,";",
+                                 df$Phylum,";",df$Class,";",df$Order,";",
+                                 df$Family,";",df$Genus)
+head(Xfasta)
+# Saving these
+# writeLines(Xfasta, "silva_database_curated_deduped.fasta")
+# save(df,file="silva.Rda")
+# 
+# 
+# write.csv(taxonomic_annotation,'tax_r.txt')
+
+```
+
+Final output looks something like this:
+
+For silva_database_curated_deduped.fasta
+
+>Root;Bacteria;Proteobacteria;Gammaproteobacteria;Enterobacteriales;Enterobacteriaceae;Escherichia-Shigella;Escherichia coli
+TACGGAGGGTGCAAGCGTTAATCGGAATTACTGGGCGTAAAGCGCACGCAGGCGGTTTGTTAAGTCAGATGTGAAATCCCCGGGCTCAACCTGGGAACTGCATCTGATACTGGCAAGCTTGAGTCTCGTAGAGGGGGGTAGAATTCCAGGTGTAGCGGTGAAATGCGTAGAGATCTGGAGGAATACCGGTGGCGAAGGCGGCCCCCTGGACGAAGACTGACGCTCAGGTGCGAAAGCGTGGGGAGCAAACAGG
+>Root;Bacteria;Proteobacteria;Gammaproteobacteria;Pasteurellales;Pasteurellaceae;Haemophilus;[Haemophilus] ducreyi
+TACGGGGGGTGCGAGCGTTAATCGGAATAACTGGGCGTAAAGGGCACGCAGGCGGTTGATTAAGTGAGATGTGAAAGCCCCGGGCTTAACCTGGGAATTGCATTTCATACTGGTCAACTAGAGTACTTTAGGGAGGGGTAGAATTCCACGTGTAGCGGTGAAATGCGTAGAGATGTGGAGGAATACCGAAGGCGAAGGCAGCCCCTTGGGAATGTATNGANNCTCATGTGCGAAAGCGTGGGGAGCAAACAGG
+.
+. blah blah blah
+
+For tax_r.txt
+
+"","x"
+"1","Root;Bacteria;Proteobacteria;Gammaproteobacteria;Enterobacteriales;Enterobacteriaceae;Escherichia-Shigella;Escherichia coli"
+"2","Root;Bacteria;Proteobacteria;Gammaproteobacteria;Pasteurellales;Pasteurellaceae;Haemophilus;[Haemophilus] ducreyi"
+"3","Root;Bacteria;Proteobacteria;Gammaproteobacteria;Pseudomonadales;Moraxellaceae;Moraxella;Moraxella catarrhalis"
+"4","Root;Bacteria;Thermotogae;Thermotogae;Thermotogales;Fervidobacteriaceae;Thermopallium;Thermopallium natronophilum"
+.
+. blah blah blah
+
+Some cleaning will suffice further analysis.
+
+
+```{r}
+####################################################
+# Doing classification and all                     #
+####################################################
+
+# Importing the training set
+train_set <- readDNAStringSet('silva_database_curated_deduped.fasta')
+
+# Ensuring no gaps
+seqs <- RemoveGaps(train_set)
+# Ensuring all of sequences are in same orientation
+seqs <- OrientNucleotides(seqs)
+
+
+tax_r <- read.csv("~/assignment_2/tax_r.txt")
+tax_r$X <- NULL
+```
+
+```{r}
+
+# train a genus-level IdTaxa 
+names(seqs) <- tax_r$x
+
+groups <- names(train_set)
+groups <- gsub("(.*)(Root;)", "\\2", groups)
+groupCounts <- table(groups)
+u_groups <- names(groupCounts)
+
+maxGroupSize <- 10
+remove <- logical(length(train_set))
+
+for (i in which(groupCounts > maxGroupSize)) {
+  index <- which(groups==u_groups[i])
+  keep <-   sample(length(index), maxGroupSize)
+  remove[index[-keep]] <- TRUE
+}
+
+train_set_genus <- train_set[!remove]
+
+head(train_set_genus)
+```
+
+```{r}
+
+# train a species-level IdTaxa 
+
+groups <- names(train_set)
+groups <- gsub("(.*)(Root;)", "\\2", groups)
+groupCounts <- table(groups)
+u_groups <- names(groupCounts)
+
+maxGroupSize <- 10
+remove <- logical(length(train_set))
+
+for (i in which(groupCounts > maxGroupSize)) {
+  index <- which(groups==u_groups[i])
+  keep <-   sample(length(index), maxGroupSize)
+  remove[index[-keep]] <- TRUE
+}
+
+train_set_sp <- train_set[!remove]
+
+head(train_set_sp)
+```
+
+Let's do some classification.
+
+```{r}
+###############################################
+# Running classifier for genus             #
+###############################################
+
+# classifier_genus <- LearnTaxa(train_set_genus, names(train_set_genus), maxIterations = 20)
+
+
+###############################################
+# Saving the current RDS for genus            #
+###############################################
+
+# saveRDS(classifier_genus, 'classifier_genus.RData')
+```
+
+```{r}
+###############################################
+# Running classifier for species              #
+###############################################
+
+# classifier_sp <- LearnTaxa(train_set_sp, names(train_set_sp), maxIterations = 20)
+
+###############################################
+# Saving the current RDS for species          #
+###############################################
+
+# saveRDS(classifier_sp, 'classifier_species.RData')
+```
+
+
+```{r}
+                                                                       ##
+                                                                      # #
+#####################################################################   ######
+#  Apply both classifiers to predict taxonomy for OTUs and ASVs pro-      ######
+#  duced during the previous homework assignment (confidence level:       ######
+#  80%)                                                                   ####
+############################################################################
+
+asv <- readDNAStringSet('//home/is5/assignment_1_part_2_corrected/dada/sequences.fna')
+
+ids_gn <- IdTaxa(asv,classifier_genus,type="extended",strand="top",threshold=80,processors=4)
+ids_sp <- IdTaxa(asv,classifier_sp,type="extended",strand="top",threshold=80,processors=4)
+
+```
+
+```{r}
+###############################################
+# Writing classification output               #
+###############################################
+
+output_ids_gn <- sapply(ids_gn,
+  function (id) {
+  paste(id$taxon,
+  " (",
+  round(id$confidence, digits=1),
+  "%)",
+  sep="",
+  collapse="; ")
+  })
+
+output_ids_sp <- sapply(ids_sp,
+  function (id) {
+  paste(id$taxon,
+  " (",
+  round(id$confidence, digits=1),
+  "%)",
+  sep="",
+  collapse="; ")
+  })
+
+writeLines(output_ids_gn, "//home/is5/assignment_2/classification_output_genus.txt")
+writeLines(output_ids_sp, "//home/is5/assignment_2/classification_output_species.txt")
+
+```
+
+```{r}
+# last chunk
+```

@@ -1,0 +1,164 @@
+---
+title: "dada_assignment_1_part_2_corrected.rmd"
+output: html_document
+---
+
+```{r message=FALSE, warning=FALSE}
+library(dada2)
+library(phyloseq)
+library(DECIPHER)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+
+
+set.seed(40)
+
+n.threads = 30
+```
+
+Specify sample files and extract sample names
+
+```{r}
+root.raw <- '/home/is5/assignment_1'
+forward.raw <- sort(list.files(root.raw, pattern='S1_R1.fastq.gz', full.names = TRUE))
+reverse.raw <- sort(list.files(root.raw, pattern='S1_R2.fastq.gz', full.names = TRUE))
+sample.names <- sapply(strsplit(basename(forward.raw), "_"), `[`, 1)
+```
+
+Inspect quality.
+
+Forward reads
+
+```{r}
+plotQualityProfile(forward.raw, aggregate=TRUE, n=100000)
+```
+
+Reverse reads
+
+```{r}
+plotQualityProfile(reverse.raw, aggregate=TRUE, n=100000)
+```
+
+Filter and trim reads
+
+```{r}
+root.qc = './qc'
+forward.qc <- file.path(root.qc, paste0(sample.names, "_fwd.fastq.gz"))
+reverse.qc <- file.path(root.qc, paste0(sample.names, "_rev.fastq.gz"))
+
+qc.out <- filterAndTrim(forward.raw, forward.qc, reverse.raw, reverse.qc, 
+                        truncLen=c(250, 160), maxEE=c(3,3), compress=TRUE, multithread=n.threads)
+qc.out
+```
+
+```{r}
+plotQualityProfile(forward.raw, aggregate=TRUE, n=100000)
+```
+
+```{r}
+plotQualityProfile(reverse.raw, aggregate=TRUE, n=100000)
+```
+
+Fit error models
+
+Forward reads
+```{r}
+forward.err <- learnErrors(forward.qc, multithread=n.threads, MAX_CONSIST=20)
+```
+
+Reverse reads
+```{r}
+reverse.err <- learnErrors(reverse.qc, multithread=n.threads, MAX_CONSIST=20)
+```
+
+Dereplicate
+
+```{r}
+
+forward.derep <- derepFastq(forward.qc, n=1e7, verbose=TRUE)
+reverse.derep <- derepFastq(reverse.qc, n=1e7, verbose=TRUE)
+# Name the derep-class objects by the sample names
+names(forward.derep) <- sample.names
+names(reverse.derep) <- sample.names
+```
+
+Infer sample composition
+
+```{r}
+forward.dada <- dada(forward.derep, err=forward.err, pool='pseudo', multithread=n.threads)
+reverse.dada <- dada(reverse.derep, err=reverse.err, pool='pseudo', multithread=n.threads)
+```
+
+Merge pairs
+
+```{r}
+merged <- mergePairs(forward.dada, forward.derep, reverse.dada, reverse.derep, verbose=TRUE)
+```
+
+Build a sequence table and remove chimera
+
+```{r}
+sequence.table <- makeSequenceTable(merged)
+sequence.table.nochim <- removeBimeraDenovo(sequence.table, method="consensus", multithread=n.threads, verbose=TRUE)
+```
+
+Summarise preprocessing statistics
+
+```{r}
+get.n <- function(x) sum(getUniques(x))
+statistics <- cbind(qc.out,
+  get.n(forward.dada),
+  get.n(reverse.dada),
+  get.n(merged),
+  rowSums(sequence.table.nochim))
+colnames(statistics) <- c('noprimer_pairs', 'qc_pairs', 'forward_denoised', 'reverse_denoised', 'merged', 'non-chimeric')
+rownames(statistics) <- sample.names
+
+```
+
+Extract sequences and sequence counts, subset sequences observed at least 3 times in at least 20% of the samples.
+
+```{r}
+# extract results
+seqs <- getSequences(sequence.table.nochim)
+seq.names <- paste0("seq", seq(length(seqs)))
+names(seqs) <- seq.names
+
+count.table <- otu_table(sequence.table.nochim, taxa_are_rows=FALSE) %>% t
+rownames(count.table) <- seq.names
+
+cat('Spared', length(seqs.subset), 'out of', length(seqs), 'sequences\n')
+cat('Spared', sum(count.table.subset), 'out of', sum(count.table), 'observations\n')
+```
+
+Write results
+
+```{r}
+output_root = './dada/'
+dir.create(output_root, showWarnings=FALSE)
+
+write.table(statistics, 'dada/stats.tsv', sep='\t', quote=FALSE, col.names=NA)
+
+writeXStringSet(seqs.subset, 'dada/sequences.fna')
+write.table(count.table.subset, "dada/counts.tsv", sep="\t", quote=FALSE, col.names=NA)
+```
+
+```{r}
+dir.create('plots', showWarnings = FALSE)
+
+colnames(statistics) <- c('Primer excisition', 'Quality control', 'Denoising (R1)', 'Denoising (R2)', 'Pair merging', 'Chimera elimination')
+statistics.long <- melt(statistics)
+
+(plot.stats <- ggplot(statistics.long, aes(x=Var2, y=value / 10^3)) + 
+    geom_boxplot() +
+    scale_x_discrete(limits = rev(levels(statistics.long$variable))) +
+    ylab(bquote('Sequence count, '*10^3*'')) +
+    coord_flip() +
+    theme_bw() +
+    theme(text=element_text(size=11,  family='Helvetica'),
+          axis.title.y=element_blank())
+)
+
+ggsave(file='plots/stats.svg', plot=plot.stats, width=6, height=2)
+```

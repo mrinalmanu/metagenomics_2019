@@ -1,0 +1,100 @@
+---
+title: "assignment_2_part_1"
+author: "Mrinal Vashisth"
+date: "10/16/2019"
+output: html_document
+---
+
+Some lines are commented out, because I don't want unnecessary executions
+```{bash}
+# cd //home/is5/assignment_2/
+# mkdir scripts
+# mkdir output
+# touch scripts/our_primer_bois.py
+# touch scripts/silvination.py
+# touch scripts/taxonominator3.py
+
+# gunzip < //home/is5/assignment_2/silva.fna.gz > //home/is5/assignment_2/silva.fna.fasta
+
+# ls -ltrh
+
+```
+Let's clean this database for Eukaryotes and incomplete annotation. Additionally, we will extract region between primer sequences.
+```{bash}
+#python3 scripts/our_primer_bois.py
+
+```
+Now we have clean_silva.fa. We will thus generate a full taxonomy and raw fasta file from the raw sequence data.
+
+```{bash}
+silvation=$'scripts/silvation.py'
+silva_fasta=$'clean_silva.fa'
+output_file=$'output/taxonomy_file_after_silva_processing.txt'
+raw_fasta=$'output/taxon_fasta_after_silva_processing.fasta'
+
+# python3 $silvation $silva_fasta $output_file $raw_fasta
+```
+
+```{bash}
+# head $output_file
+```
+AC201869.46386.47908    Bacteria;Proteobacteria;Gammaproteobacteria;Enterobacteriales;Enterobacteriaceae;Candidatus Regiella;Candidatus Regiella insecticola
+JQ765436.1.1454 Bacteria;Firmicutes;Bacilli;Bacillales;Bacillaceae;Bacillus;Bacillus amyloliquefaciens
+JQ768054.1.1289 Bacteria;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus;Enterococcus faecium
+JQ768336.1.1519 Bacteria;Proteobacteria;Gammaproteobacteria;Betaproteobacteriales;Burkholderiaceae;Burkholderia-Caballeronia-Paraburkholderia;Burkholderia arboris
+JQ771131.1.1498 Bacteria;Proteobacteria;Gammaproteobacteria;Pseudomonadales;Moraxellaceae;Acinetobacter;Acinetobacter nectaris
+JQ776521.1.1462 Bacteria;Proteobacteria;Gammaproteobacteria;Pasteurellales;Pasteurellaceae;Haemophilus;Haemophilus haemolyticus
+JQ778978.1.1232 Bacteria;Proteobacteria;Alphaproteobacteria;Rhizobiales;Xanthobacteraceae;Bradyrhizobium;bacterium UFLA04-301
+JQ779042.1.1529 Bacteria;Proteobacteria;Gammaproteobacteria;Pseudomonadales;Pseudomonadaceae;Pseudomonas;bacterium NTL208
+JQ779050.1.1529 Bacteria;Proteobacteria;Gammaproteobacteria;Pseudomonadales;Pseudomonadaceae;Pseudomonas;bacterium NTL240
+JQ779058.1.1534 Bacteria;Proteobacteria;Gammaproteobacteria;Enterobacteriales;Enterobacteriaceae;Serratia;bacterium NTL337
+
+```{bash}
+# head $raw_fasta
+```
+>AC201869.46386.47908
+TACGGAGGGTGCGAGCGTTAATCGGAATAACTGGGCGTAAAGGGCATGTAGGCGGTAAGTTAAGTCAGATGTGAAATCCCCGAGCTTAACTTGGGAACGGCATTTGAGACTGGCGGGCTAGAGTTTTGTAGAGGGGGGTAGAATTCCAGGTGTAGCGGTGAAATGCGTAGAGATCTGGAGGAATACCGGTGGCGAAGGCGGCCCCCTGGACAAGGACTGACGCTGAGGTGCGAAAGCGTGGGTAGCAAACAGG
+>JQ765436.1.1454
+TACGTAGGTGGCAAGCGTTGTCCGGAATTATTGGGCGTAAAGGGCTCGCAGGCGGTTTCTTAAGTCTGATGTGAAAGCCCCCGGCTCAACCGGGGAGGGTCATTGGAAACTGGGGAACTTGAGTGCAGAAGAGGAGAGTGGAATTCCACGTGTAGCGGTGAAATGCGTAGAGATGTGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGTCTGTAACTGACGCTGAGGAGCGAAAGCGTGGGGAGCGAACAGG
+>JQ768054.1.1289
+TACGTAGGTGGCAAGCGTTGTCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGTTTCTTAAGTCTGATGTGAAAGCCCCCGGCTCAACCGGGGAGGGTCATTGGAAACTGGGAGACTTGAGTGCAGAAGAGGAGAGTGGAATTCCATGTGTAGTGGTGAAATGCGTAGATATATGGAGGAACACCAGTGGCGAAGGCGGCTCTCTGGTCTGTAACTGACGCTGAGGCTCGAAAGCGTGGGGAGCAAACAGG
+>JQ768336.1.1519
+TACGTAGGGTGCGAGCGTTAATCGGAATTACTGGGCGTAAAGCGTGCGCAGGCGGTTTGCTAAGACCGATGTGAAATCCCCGGGCTCAACCTGGGAACTGCATTGGTGACTGGCAGGCTAGAGTATGGCAGAGGGGGGTAGAATTCCACGTGTAGCAGTGAAATGCGTAGAGATGTGGAGGAATACCGATGGCGAAGGCAGCCCCCTGGGCCAATACTGACGCTCATGCACGAAAGCGTGGGGAGCAAACAGG
+>JQ771131.1.1498
+TACAGAGGGTGCAAGCGTTAATCGGAATTACTGGGCGTAAAGCGCGCGTAGGTGGCCATTTAAGTCAAATGTGAAATCCCCGAGCTTAACTTGGGAATTGCATTCGATACTGGGTGGCTAGAGTATAGGAGAGGAAGGTAGAATTCCAGGTGTAGCGGTGAAATGCGTAGAGATCTGGAGGAATACCGATGGCGAAGGCAGCCTTCTGGCCTAATACTGACACTGAGGTGCGAAAGCATGGGGAGCAAACAGG
+
+To be on the safe side, I am going to clean illegal characters (if there are any). I don't want the model to crash halfway through.
+
+```{bash}
+
+# python3 scripts/chistoe_imya.py output/taxonomy_file_after_silva_processing.txt > output/cleaned_taxonomy_file_after_silva_processing.txt
+
+# rm output/taxonomy_file_after_silva_processing.txt
+
+# head output/cleaned_taxonomy_file_after_silva_processing.txt
+
+```
+
+AC201869.46386.47908    Bacteria;Proteobacteria;Gammaproteobacteria;Enterobacteriales;Enterobacteriaceae;Candidatus Regiella;Candidatus Regiella insecticola
+JQ765436.1.1454 Bacteria;Firmicutes;Bacilli;Bacillales;Bacillaceae;Bacillus;Bacillus amyloliquefaciens
+JQ768054.1.1289 Bacteria;Firmicutes;Bacilli;Lactobacillales;Enterococcaceae;Enterococcus;Enterococcus faecium
+JQ768336.1.1519 Bacteria;Proteobacteria;Gammaproteobacteria;Betaproteobacteriales;Burkholderiaceae;Burkholderia-Caballeronia-Paraburkholderia;Burkholderia arboris
+JQ771131.1.1498 Bacteria;Proteobacteria;Gammaproteobacteria;Pseudomonadales;Moraxellaceae;Acinetobacter;Acinetobacter nectaris
+JQ776521.1.1462 Bacteria;Proteobacteria;Gammaproteobacteria;Pasteurellales;Pasteurellaceae;Haemophilus;Haemophilus haemolyticus
+JQ778978.1.1232 Bacteria;Proteobacteria;Alphaproteobacteria;Rhizobiales;Xanthobacteraceae;Bradyrhizobium;bacterium UFLA04-301
+JQ779042.1.1529 Bacteria;Proteobacteria;Gammaproteobacteria;Pseudomonadales;Pseudomonadaceae;Pseudomonas;bacterium NTL208
+JQ779050.1.1529 Bacteria;Proteobacteria;Gammaproteobacteria;Pseudomonadales;Pseudomonadaceae;Pseudomonas;bacterium NTL240
+JQ779058.1.1534 Bacteria;Proteobacteria;Gammaproteobacteria;Enterobacteriales;Enterobacteriaceae;Serratia;bacterium NTL337
+
+
+Before moving forward, I have decided to do the following steps in R
+
+7. Group taxonomies by extracted target sequences and summarise
+the number of groups with taxonomy conflicts at each taxonomic
+level;
+8. Export each unique Taxonomy-Target pair into a FASTA file con-
+sistent with the sequence-labelling format of the original SILVA
+file;
+
+
+

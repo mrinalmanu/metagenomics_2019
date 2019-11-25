@@ -1,0 +1,330 @@
+	votes	nleaves	rank	clade	feature	balance
+1	Gammaproteobacteria	7	Rank4	+	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+2	Gammaproteobacteria Incertae Sedis	6	Rank5	+	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+3	Steroidobacterales	1	Rank5	+	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+4	Steroidobacteraceae	1	Rank6	+	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+5	Unknown Family	6	Rank6	+	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+6	Acidibacter	6	Rank7	+	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+7	Steroidobacter	1	Rank7	+	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+8	Gammaproteobacteria	49	Rank4	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+9	Betaproteobacteriales	26	Rank5	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+10	Xanthomonadales	23	Rank5	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+11	Burkholderiaceae	13	Rank6	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+12	Nitrosomonadaceae	12	Rank6	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+13	Rhodanobacteraceae	4	Rank6	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+14	SC-I-84	1	Rank6	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+15	Xanthomonadaceae	19	Rank6	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+16	Acidobacteria bacterium WX25	1	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+17	Arenimonas	5	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+18	Burkholderia-Caballeronia-Paraburkholderia	3	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+19	Dokdonella	1	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+20	Duganella	1	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+21	Ellin6067	8	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+22	IS-44	1	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+23	Luteibacter	1	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+24	Lysobacter	10	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+25	Massilia	8	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+26	MND1	1	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+27	Nitrosospira	2	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+28	Pseudoxanthomonas	1	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+29	Ralstonia	1	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+30	Rhodanobacter	1	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+31	Stenotrophomonas	3	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+32	Tahibacter	1	Rank7	-	b9	Rank4_Gammaproteobacteria/Rank4_Gammaproteobacteria
+33	Gammaproteobacteria	3	Rank4	+	b13	Rank8_unclassified Acidibacter/Rank8_unclassified Acidibacter
+34	Gammaproteobacteria Incertae Sedis	3	Rank5	+	b13	Rank8_unclassified Acidibacter/Rank8_unclassified Acidibacter
+35	Unknown Family	3	Rank6	+	b13	Rank8_unclassified Acidibacter/Rank8_unclassified Acidibacter
+36	Acidibacter	3	Rank7	+	b13	Rank8_unclassified Acidibacter/Rank8_unclassified Acidibacter
+37	Gammaproteobacteria	1	Rank4	-	b13	Rank8_unclassified Acidibacter/Rank8_unclassified Acidibacter
+38	Gammaproteobacteria Incertae Sedis	1	Rank5	-	b13	Rank8_unclassified Acidibacter/Rank8_unclassified Acidibacter
+39	Unknown Family	1	Rank6	-	b13	Rank8_unclassified Acidibacter/Rank8_unclassified Acidibacter
+40	Acidibacter	1	Rank7	-	b13	Rank8_unclassified Acidibacter/Rank8_unclassified Acidibacter
+41	Gammaproteobacteria	1	Rank4	+	b19	Rank8_unclassified Luteibacter/Rank8_unclassified Rhodanobacter
+42	Xanthomonadales	1	Rank5	+	b19	Rank8_unclassified Luteibacter/Rank8_unclassified Rhodanobacter
+43	Rhodanobacteraceae	1	Rank6	+	b19	Rank8_unclassified Luteibacter/Rank8_unclassified Rhodanobacter
+44	Luteibacter	1	Rank7	+	b19	Rank8_unclassified Luteibacter/Rank8_unclassified Rhodanobacter
+45	Gammaproteobacteria	1	Rank4	-	b19	Rank8_unclassified Luteibacter/Rank8_unclassified Rhodanobacter
+46	Xanthomonadales	1	Rank5	-	b19	Rank8_unclassified Luteibacter/Rank8_unclassified Rhodanobacter
+47	Rhodanobacteraceae	1	Rank6	-	b19	Rank8_unclassified Luteibacter/Rank8_unclassified Rhodanobacter
+48	Rhodanobacter	1	Rank7	-	b19	Rank8_unclassified Luteibacter/Rank8_unclassified Rhodanobacter
+49	Gammaproteobacteria	1	Rank4	+	b33	Rank8_unclassified Stenotrophomonas/Rank8_unclassified Stenotrophomonas
+50	Xanthomonadales	1	Rank5	+	b33	Rank8_unclassified Stenotrophomonas/Rank8_unclassified Stenotrophomonas
+51	Xanthomonadaceae	1	Rank6	+	b33	Rank8_unclassified Stenotrophomonas/Rank8_unclassified Stenotrophomonas
+52	Stenotrophomonas	1	Rank7	+	b33	Rank8_unclassified Stenotrophomonas/Rank8_unclassified Stenotrophomonas
+53	Gammaproteobacteria	1	Rank4	-	b33	Rank8_unclassified Stenotrophomonas/Rank8_unclassified Stenotrophomonas
+54	Xanthomonadales	1	Rank5	-	b33	Rank8_unclassified Stenotrophomonas/Rank8_unclassified Stenotrophomonas
+55	Xanthomonadaceae	1	Rank6	-	b33	Rank8_unclassified Stenotrophomonas/Rank8_unclassified Stenotrophomonas
+56	Stenotrophomonas	1	Rank7	-	b33	Rank8_unclassified Stenotrophomonas/Rank8_unclassified Stenotrophomonas
+57	Gammaproteobacteria	2	Rank4	+	b44	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+58	Betaproteobacteriales	2	Rank5	+	b44	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+59	Burkholderiaceae	2	Rank6	+	b44	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+60	Burkholderia-Caballeronia-Paraburkholderia	2	Rank7	+	b44	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+61	Gammaproteobacteria	1	Rank4	-	b44	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+62	Betaproteobacteriales	1	Rank5	-	b44	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+63	Burkholderiaceae	1	Rank6	-	b44	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+64	Burkholderia-Caballeronia-Paraburkholderia	1	Rank7	-	b44	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+65	Gammaproteobacteria	1	Rank4	+	b45	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+66	Betaproteobacteriales	1	Rank5	+	b45	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+67	Burkholderiaceae	1	Rank6	+	b45	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+68	Burkholderia-Caballeronia-Paraburkholderia	1	Rank7	+	b45	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+69	Gammaproteobacteria	1	Rank4	-	b45	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+70	Betaproteobacteriales	1	Rank5	-	b45	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+71	Burkholderiaceae	1	Rank6	-	b45	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+72	Burkholderia-Caballeronia-Paraburkholderia	1	Rank7	-	b45	Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia/Rank8_unclassified Burkholderia-Caballeronia-Paraburkholderia
+73	Gammaproteobacteria	1	Rank4	+	b51	Rank8_unclassified Massilia/Rank8_unclassified Massilia
+74	Betaproteobacteriales	1	Rank5	+	b51	Rank8_unclassified Massilia/Rank8_unclassified Massilia
+75	Burkholderiaceae	1	Rank6	+	b51	Rank8_unclassified Massilia/Rank8_unclassified Massilia
+76	Massilia	1	Rank7	+	b51	Rank8_unclassified Massilia/Rank8_unclassified Massilia
+77	Gammaproteobacteria	1	Rank4	-	b51	Rank8_unclassified Massilia/Rank8_unclassified Massilia
+78	Betaproteobacteriales	1	Rank5	-	b51	Rank8_unclassified Massilia/Rank8_unclassified Massilia
+79	Burkholderiaceae	1	Rank6	-	b51	Rank8_unclassified Massilia/Rank8_unclassified Massilia
+80	Massilia	1	Rank7	-	b51	Rank8_unclassified Massilia/Rank8_unclassified Massilia
+81	Gammaproteobacteria	1	Rank4	+	b72	Rank8_unclassified Acinetobacter/Rank8_unclassified Acinetobacter
+82	Pseudomonadales	1	Rank5	+	b72	Rank8_unclassified Acinetobacter/Rank8_unclassified Acinetobacter
+83	Moraxellaceae	1	Rank6	+	b72	Rank8_unclassified Acinetobacter/Rank8_unclassified Acinetobacter
+84	Acinetobacter	1	Rank7	+	b72	Rank8_unclassified Acinetobacter/Rank8_unclassified Acinetobacter
+85	Gammaproteobacteria	1	Rank4	-	b72	Rank8_unclassified Acinetobacter/Rank8_unclassified Acinetobacter
+86	Pseudomonadales	1	Rank5	-	b72	Rank8_unclassified Acinetobacter/Rank8_unclassified Acinetobacter
+87	Moraxellaceae	1	Rank6	-	b72	Rank8_unclassified Acinetobacter/Rank8_unclassified Acinetobacter
+88	Acinetobacter	1	Rank7	-	b72	Rank8_unclassified Acinetobacter/Rank8_unclassified Acinetobacter
+89	Alphaproteobacteria	20	Rank4	+	b92	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+90	Sphingomonadales	20	Rank5	+	b92	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+91	Sphingomonadaceae	20	Rank6	+	b92	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+92	Sphingomonas	20	Rank7	+	b92	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+93	Alphaproteobacteria	1	Rank4	-	b92	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+94	Sphingomonadales	1	Rank5	-	b92	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+95	Sphingomonadaceae	1	Rank6	-	b92	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+96	Sphingomonas	1	Rank7	-	b92	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+97	Alphaproteobacteria	3	Rank4	+	b94	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+98	Sphingomonadales	3	Rank5	+	b94	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+99	Sphingomonadaceae	3	Rank6	+	b94	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+100	Sphingomonas	3	Rank7	+	b94	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+101	Alphaproteobacteria	1	Rank4	-	b94	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+102	Sphingomonadales	1	Rank5	-	b94	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+103	Sphingomonadaceae	1	Rank6	-	b94	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+104	Sphingomonas	1	Rank7	-	b94	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+105	Alphaproteobacteria	3	Rank4	+	b108	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+106	Sphingomonadales	3	Rank5	+	b108	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+107	Sphingomonadaceae	3	Rank6	+	b108	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+108	Sphingomonas	3	Rank7	+	b108	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+109	Alphaproteobacteria	2	Rank4	-	b108	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+110	Sphingomonadales	2	Rank5	-	b108	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+111	Sphingomonadaceae	2	Rank6	-	b108	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+112	Sphingomonas	2	Rank7	-	b108	Rank8_unclassified Sphingomonas/Rank8_unclassified Sphingomonas
+113	Alphaproteobacteria	7	Rank4	+	b116	Rank6_Caulobacteraceae/Rank7_Asticcacaulis
+114	Caulobacterales	7	Rank5	+	b116	Rank6_Caulobacteraceae/Rank7_Asticcacaulis
+115	Caulobacteraceae	7	Rank6	+	b116	Rank6_Caulobacteraceae/Rank7_Asticcacaulis
+116	Caulobacter	3	Rank7	+	b116	Rank6_Caulobacteraceae/Rank7_Asticcacaulis
+117	Phenylobacterium	4	Rank7	+	b116	Rank6_Caulobacteraceae/Rank7_Asticcacaulis
+118	Alphaproteobacteria	3	Rank4	-	b116	Rank6_Caulobacteraceae/Rank7_Asticcacaulis
+119	Caulobacterales	3	Rank5	-	b116	Rank6_Caulobacteraceae/Rank7_Asticcacaulis
+120	Caulobacteraceae	3	Rank6	-	b116	Rank6_Caulobacteraceae/Rank7_Asticcacaulis
+121	Asticcacaulis	3	Rank7	-	b116	Rank6_Caulobacteraceae/Rank7_Asticcacaulis
+122	Alphaproteobacteria	2	Rank4	+	b141	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+123	Rhizobiales	2	Rank5	+	b141	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+124	Labraceae	2	Rank6	+	b141	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+125	Labrys	2	Rank7	+	b141	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+126	Alphaproteobacteria	1	Rank4	-	b141	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+127	Rhizobiales	1	Rank5	-	b141	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+128	Labraceae	1	Rank6	-	b141	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+129	Labrys	1	Rank7	-	b141	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+130	Alphaproteobacteria	1	Rank4	+	b142	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+131	Rhizobiales	1	Rank5	+	b142	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+132	Labraceae	1	Rank6	+	b142	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+133	Labrys	1	Rank7	+	b142	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+134	Alphaproteobacteria	1	Rank4	-	b142	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+135	Rhizobiales	1	Rank5	-	b142	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+136	Labraceae	1	Rank6	-	b142	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+137	Labrys	1	Rank7	-	b142	Rank8_unclassified Labrys/Rank8_unclassified Labrys
+138	Acidobacteriia	1	Rank4	+	b234	Rank8_unclassified Acidipila/Rank8_unclassified Acidipila
+139	Acidobacteriales	1	Rank5	+	b234	Rank8_unclassified Acidipila/Rank8_unclassified Acidipila
+140	Acidobacteriaceae (Subgroup 1)	1	Rank6	+	b234	Rank8_unclassified Acidipila/Rank8_unclassified Acidipila
+141	Acidipila	1	Rank7	+	b234	Rank8_unclassified Acidipila/Rank8_unclassified Acidipila
+142	Acidobacteriia	1	Rank4	-	b234	Rank8_unclassified Acidipila/Rank8_unclassified Acidipila
+143	Acidobacteriales	1	Rank5	-	b234	Rank8_unclassified Acidipila/Rank8_unclassified Acidipila
+144	Acidobacteriaceae (Subgroup 1)	1	Rank6	-	b234	Rank8_unclassified Acidipila/Rank8_unclassified Acidipila
+145	Acidipila	1	Rank7	-	b234	Rank8_unclassified Acidipila/Rank8_unclassified Acidipila
+146	Thermoleophilia	3	Rank4	+	b265	Rank8_unclassified Solirubrobacter/Rank8_unclassified Solirubrobacter
+147	Solirubrobacterales	3	Rank5	+	b265	Rank8_unclassified Solirubrobacter/Rank8_unclassified Solirubrobacter
+148	Solirubrobacteraceae	3	Rank6	+	b265	Rank8_unclassified Solirubrobacter/Rank8_unclassified Solirubrobacter
+149	Solirubrobacter	3	Rank7	+	b265	Rank8_unclassified Solirubrobacter/Rank8_unclassified Solirubrobacter
+150	Thermoleophilia	5	Rank4	-	b265	Rank8_unclassified Solirubrobacter/Rank8_unclassified Solirubrobacter
+151	Solirubrobacterales	5	Rank5	-	b265	Rank8_unclassified Solirubrobacter/Rank8_unclassified Solirubrobacter
+152	Solirubrobacteraceae	5	Rank6	-	b265	Rank8_unclassified Solirubrobacter/Rank8_unclassified Solirubrobacter
+153	Solirubrobacter	5	Rank7	-	b265	Rank8_unclassified Solirubrobacter/Rank8_unclassified Solirubrobacter
+154	Actinobacteria	4	Rank4	+	b292	Rank8_unclassified Mycobacterium/Rank8_unclassified Mycobacterium
+155	Corynebacteriales	4	Rank5	+	b292	Rank8_unclassified Mycobacterium/Rank8_unclassified Mycobacterium
+156	Mycobacteriaceae	4	Rank6	+	b292	Rank8_unclassified Mycobacterium/Rank8_unclassified Mycobacterium
+157	Mycobacterium	4	Rank7	+	b292	Rank8_unclassified Mycobacterium/Rank8_unclassified Mycobacterium
+158	Actinobacteria	1	Rank4	-	b292	Rank8_unclassified Mycobacterium/Rank8_unclassified Mycobacterium
+159	Corynebacteriales	1	Rank5	-	b292	Rank8_unclassified Mycobacterium/Rank8_unclassified Mycobacterium
+160	Mycobacteriaceae	1	Rank6	-	b292	Rank8_unclassified Mycobacterium/Rank8_unclassified Mycobacterium
+161	Mycobacterium	1	Rank7	-	b292	Rank8_unclassified Mycobacterium/Rank8_unclassified Mycobacterium
+162	Actinobacteria	6	Rank4	+	b324	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+163	Propionibacteriales	6	Rank5	+	b324	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+164	Nocardioidaceae	6	Rank6	+	b324	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+165	Nocardioides	6	Rank7	+	b324	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+166	Actinobacteria	3	Rank4	-	b324	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+167	Propionibacteriales	3	Rank5	-	b324	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+168	Nocardioidaceae	3	Rank6	-	b324	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+169	Nocardioides	3	Rank7	-	b324	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+170	Actinobacteria	2	Rank4	+	b327	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+171	Propionibacteriales	2	Rank5	+	b327	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+172	Nocardioidaceae	2	Rank6	+	b327	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+173	Nocardioides	2	Rank7	+	b327	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+174	Actinobacteria	2	Rank4	-	b327	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+175	Propionibacteriales	2	Rank5	-	b327	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+176	Nocardioidaceae	2	Rank6	-	b327	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+177	Nocardioides	2	Rank7	-	b327	Rank8_unclassified Nocardioides/Rank8_unclassified Nocardioides
+178	Planctomycetacia	1	Rank4	+	b394	Rank8_unclassified Pir4 lineage/Rank8_unclassified Pir4 lineage
+179	Pirellulales	1	Rank5	+	b394	Rank8_unclassified Pir4 lineage/Rank8_unclassified Pir4 lineage
+180	Pirellulaceae	1	Rank6	+	b394	Rank8_unclassified Pir4 lineage/Rank8_unclassified Pir4 lineage
+181	Pir4 lineage	1	Rank7	+	b394	Rank8_unclassified Pir4 lineage/Rank8_unclassified Pir4 lineage
+182	Planctomycetacia	1	Rank4	-	b394	Rank8_unclassified Pir4 lineage/Rank8_unclassified Pir4 lineage
+183	Pirellulales	1	Rank5	-	b394	Rank8_unclassified Pir4 lineage/Rank8_unclassified Pir4 lineage
+184	Pirellulaceae	1	Rank6	-	b394	Rank8_unclassified Pir4 lineage/Rank8_unclassified Pir4 lineage
+185	Pir4 lineage	1	Rank7	-	b394	Rank8_unclassified Pir4 lineage/Rank8_unclassified Pir4 lineage
+186	Verrucomicrobiae	9	Rank4	+	b422	Rank8_unclassified Candidatus Udaeobacter/Rank8_unclassified Candidatus Udaeobacter
+187	Chthoniobacterales	9	Rank5	+	b422	Rank8_unclassified Candidatus Udaeobacter/Rank8_unclassified Candidatus Udaeobacter
+188	Chthoniobacteraceae	9	Rank6	+	b422	Rank8_unclassified Candidatus Udaeobacter/Rank8_unclassified Candidatus Udaeobacter
+189	Candidatus Udaeobacter	9	Rank7	+	b422	Rank8_unclassified Candidatus Udaeobacter/Rank8_unclassified Candidatus Udaeobacter
+190	Verrucomicrobiae	2	Rank4	-	b422	Rank8_unclassified Candidatus Udaeobacter/Rank8_unclassified Candidatus Udaeobacter
+191	Chthoniobacterales	2	Rank5	-	b422	Rank8_unclassified Candidatus Udaeobacter/Rank8_unclassified Candidatus Udaeobacter
+192	Chthoniobacteraceae	2	Rank6	-	b422	Rank8_unclassified Candidatus Udaeobacter/Rank8_unclassified Candidatus Udaeobacter
+193	Candidatus Udaeobacter	2	Rank7	-	b422	Rank8_unclassified Candidatus Udaeobacter/Rank8_unclassified Candidatus Udaeobacter
+194	Verrucomicrobiae	5	Rank4	+	b435	Rank8_unclassified Chthoniobacter/Rank6_Chthoniobacteraceae
+195	Chthoniobacterales	5	Rank5	+	b435	Rank8_unclassified Chthoniobacter/Rank6_Chthoniobacteraceae
+196	Chthoniobacteraceae	5	Rank6	+	b435	Rank8_unclassified Chthoniobacter/Rank6_Chthoniobacteraceae
+197	Chthoniobacter	5	Rank7	+	b435	Rank8_unclassified Chthoniobacter/Rank6_Chthoniobacteraceae
+198	Verrucomicrobiae	2	Rank4	-	b435	Rank8_unclassified Chthoniobacter/Rank6_Chthoniobacteraceae
+199	Chthoniobacterales	2	Rank5	-	b435	Rank8_unclassified Chthoniobacter/Rank6_Chthoniobacteraceae
+200	Chthoniobacteraceae	2	Rank6	-	b435	Rank8_unclassified Chthoniobacter/Rank6_Chthoniobacteraceae
+201	Candidatus Udaeobacter	1	Rank7	-	b435	Rank8_unclassified Chthoniobacter/Rank6_Chthoniobacteraceae
+202	Chthoniobacter	1	Rank7	-	b435	Rank8_unclassified Chthoniobacter/Rank6_Chthoniobacteraceae
+203	Bacilli	8	Rank4	+	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+204	Bacillales	8	Rank5	+	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+205	Bacillaceae	6	Rank6	+	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+206	Planococcaceae	1	Rank6	+	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+207	Staphylococcaceae	1	Rank6	+	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+208	Bacillus	6	Rank7	+	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+209	Lysinibacillus	1	Rank7	+	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+210	Staphylococcus	1	Rank7	+	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+211	Bacilli	2	Rank4	-	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+212	Bacillales	2	Rank5	-	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+213	Bacillaceae	2	Rank6	-	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+214	Bacillus	2	Rank7	-	b466	Rank5_Bacillales/Rank8_unclassified Bacillus
+215	Bacilli	1	Rank4	+	b468	Rank8_unclassified Bacillus/Rank8_unclassified Bacillus
+216	Bacillales	1	Rank5	+	b468	Rank8_unclassified Bacillus/Rank8_unclassified Bacillus
+217	Bacillaceae	1	Rank6	+	b468	Rank8_unclassified Bacillus/Rank8_unclassified Bacillus
+218	Bacillus	1	Rank7	+	b468	Rank8_unclassified Bacillus/Rank8_unclassified Bacillus
+219	Bacilli	1	Rank4	-	b468	Rank8_unclassified Bacillus/Rank8_unclassified Bacillus
+220	Bacillales	1	Rank5	-	b468	Rank8_unclassified Bacillus/Rank8_unclassified Bacillus
+221	Bacillaceae	1	Rank6	-	b468	Rank8_unclassified Bacillus/Rank8_unclassified Bacillus
+222	Bacillus	1	Rank7	-	b468	Rank8_unclassified Bacillus/Rank8_unclassified Bacillus
+223	Bacilli	9	Rank4	+	b482	Rank7_Paenibacillus/Rank8_unclassified Paenibacillus
+224	Bacillales	9	Rank5	+	b482	Rank7_Paenibacillus/Rank8_unclassified Paenibacillus
+225	Paenibacillaceae	9	Rank6	+	b482	Rank7_Paenibacillus/Rank8_unclassified Paenibacillus
+226	Paenibacillus	9	Rank7	+	b482	Rank7_Paenibacillus/Rank8_unclassified Paenibacillus
+227	Bacilli	1	Rank4	-	b482	Rank7_Paenibacillus/Rank8_unclassified Paenibacillus
+228	Bacillales	1	Rank5	-	b482	Rank7_Paenibacillus/Rank8_unclassified Paenibacillus
+229	Paenibacillaceae	1	Rank6	-	b482	Rank7_Paenibacillus/Rank8_unclassified Paenibacillus
+230	Paenibacillus	1	Rank7	-	b482	Rank7_Paenibacillus/Rank8_unclassified Paenibacillus
+231	Bacteroidia	27	Rank4	+	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+232	Cytophagales	27	Rank5	+	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+233	Microscillaceae	12	Rank6	+	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+234	Spirosomaceae	15	Rank6	+	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+235	Chryseolinea	4	Rank7	+	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+236	Dyadobacter	14	Rank7	+	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+237	Larkinella	1	Rank7	+	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+238	Ohtaekwangia	7	Rank7	+	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+239	OLB12	1	Rank7	+	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+240	Bacteroidia	2	Rank4	-	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+241	Cytophagales	2	Rank5	-	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+242	Cytophagaceae	2	Rank6	-	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+243	Rhodocytophaga	2	Rank7	-	b496	Rank5_Cytophagales/Rank8_unclassified Rhodocytophaga
+244	Bacteroidia	5	Rank4	+	b500	Rank8_unclassified Dyadobacter/Rank8_unclassified Dyadobacter
+245	Cytophagales	5	Rank5	+	b500	Rank8_unclassified Dyadobacter/Rank8_unclassified Dyadobacter
+246	Spirosomaceae	5	Rank6	+	b500	Rank8_unclassified Dyadobacter/Rank8_unclassified Dyadobacter
+247	Dyadobacter	5	Rank7	+	b500	Rank8_unclassified Dyadobacter/Rank8_unclassified Dyadobacter
+248	Bacteroidia	1	Rank4	-	b500	Rank8_unclassified Dyadobacter/Rank8_unclassified Dyadobacter
+249	Cytophagales	1	Rank5	-	b500	Rank8_unclassified Dyadobacter/Rank8_unclassified Dyadobacter
+250	Spirosomaceae	1	Rank6	-	b500	Rank8_unclassified Dyadobacter/Rank8_unclassified Dyadobacter
+251	Dyadobacter	1	Rank7	-	b500	Rank8_unclassified Dyadobacter/Rank8_unclassified Dyadobacter
+252	Bacteroidia	1	Rank4	+	b519	Rank8_unclassified Ohtaekwangia/Rank8_unclassified Ohtaekwangia
+253	Cytophagales	1	Rank5	+	b519	Rank8_unclassified Ohtaekwangia/Rank8_unclassified Ohtaekwangia
+254	Microscillaceae	1	Rank6	+	b519	Rank8_unclassified Ohtaekwangia/Rank8_unclassified Ohtaekwangia
+255	Ohtaekwangia	1	Rank7	+	b519	Rank8_unclassified Ohtaekwangia/Rank8_unclassified Ohtaekwangia
+256	Bacteroidia	1	Rank4	-	b519	Rank8_unclassified Ohtaekwangia/Rank8_unclassified Ohtaekwangia
+257	Cytophagales	1	Rank5	-	b519	Rank8_unclassified Ohtaekwangia/Rank8_unclassified Ohtaekwangia
+258	Microscillaceae	1	Rank6	-	b519	Rank8_unclassified Ohtaekwangia/Rank8_unclassified Ohtaekwangia
+259	Ohtaekwangia	1	Rank7	-	b519	Rank8_unclassified Ohtaekwangia/Rank8_unclassified Ohtaekwangia
+260	Bacteroidia	1	Rank4	+	b542	Rank8_unclassified Chitinophaga/Rank8_unclassified Chitinophaga
+261	Chitinophagales	1	Rank5	+	b542	Rank8_unclassified Chitinophaga/Rank8_unclassified Chitinophaga
+262	Chitinophagaceae	1	Rank6	+	b542	Rank8_unclassified Chitinophaga/Rank8_unclassified Chitinophaga
+263	Chitinophaga	1	Rank7	+	b542	Rank8_unclassified Chitinophaga/Rank8_unclassified Chitinophaga
+264	Bacteroidia	1	Rank4	-	b542	Rank8_unclassified Chitinophaga/Rank8_unclassified Chitinophaga
+265	Chitinophagales	1	Rank5	-	b542	Rank8_unclassified Chitinophaga/Rank8_unclassified Chitinophaga
+266	Chitinophagaceae	1	Rank6	-	b542	Rank8_unclassified Chitinophaga/Rank8_unclassified Chitinophaga
+267	Chitinophaga	1	Rank7	-	b542	Rank8_unclassified Chitinophaga/Rank8_unclassified Chitinophaga
+268	Bacteroidia	1	Rank4	+	b551	Rank8_unclassified Parafilimonas/Rank8_unclassified Parafilimonas
+269	Chitinophagales	1	Rank5	+	b551	Rank8_unclassified Parafilimonas/Rank8_unclassified Parafilimonas
+270	Chitinophagaceae	1	Rank6	+	b551	Rank8_unclassified Parafilimonas/Rank8_unclassified Parafilimonas
+271	Parafilimonas	1	Rank7	+	b551	Rank8_unclassified Parafilimonas/Rank8_unclassified Parafilimonas
+272	Bacteroidia	1	Rank4	-	b551	Rank8_unclassified Parafilimonas/Rank8_unclassified Parafilimonas
+273	Chitinophagales	1	Rank5	-	b551	Rank8_unclassified Parafilimonas/Rank8_unclassified Parafilimonas
+274	Chitinophagaceae	1	Rank6	-	b551	Rank8_unclassified Parafilimonas/Rank8_unclassified Parafilimonas
+275	Parafilimonas	1	Rank7	-	b551	Rank8_unclassified Parafilimonas/Rank8_unclassified Parafilimonas
+276	Bacteroidia	6	Rank4	+	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+277	Chitinophagales	6	Rank5	+	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+278	Chitinophagaceae	6	Rank6	+	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+279	Flavisolibacter	2	Rank7	+	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+280	Lacibacter	2	Rank7	+	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+281	Sediminibacterium	2	Rank7	+	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+282	Bacteroidia	11	Rank4	-	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+283	Chitinophagales	11	Rank5	-	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+284	Chitinophagaceae	11	Rank6	-	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+285	Flavitalea	2	Rank7	-	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+286	Niastella	1	Rank7	-	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+287	Parasegetibacter	1	Rank7	-	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+288	Pseudoflavitalea	2	Rank7	-	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+289	Terrimonas	5	Rank7	-	b552	Rank6_Chitinophagaceae/Rank6_Chitinophagaceae
+290	Bacteroidia	1	Rank4	+	b605	Rank8_unclassified Flavobacterium/Rank8_unclassified Flavobacterium
+291	Flavobacteriales	1	Rank5	+	b605	Rank8_unclassified Flavobacterium/Rank8_unclassified Flavobacterium
+292	Flavobacteriaceae	1	Rank6	+	b605	Rank8_unclassified Flavobacterium/Rank8_unclassified Flavobacterium
+293	Flavobacterium	1	Rank7	+	b605	Rank8_unclassified Flavobacterium/Rank8_unclassified Flavobacterium
+294	Bacteroidia	1	Rank4	-	b605	Rank8_unclassified Flavobacterium/Rank8_unclassified Flavobacterium
+295	Flavobacteriales	1	Rank5	-	b605	Rank8_unclassified Flavobacterium/Rank8_unclassified Flavobacterium
+296	Flavobacteriaceae	1	Rank6	-	b605	Rank8_unclassified Flavobacterium/Rank8_unclassified Flavobacterium
+297	Flavobacterium	1	Rank7	-	b605	Rank8_unclassified Flavobacterium/Rank8_unclassified Flavobacterium
+298	Bacteroidia	2	Rank4	+	b622	Rank8_unclassified Mucilaginibacter/Rank8_unclassified Mucilaginibacter
+299	Sphingobacteriales	2	Rank5	+	b622	Rank8_unclassified Mucilaginibacter/Rank8_unclassified Mucilaginibacter
+300	Sphingobacteriaceae	2	Rank6	+	b622	Rank8_unclassified Mucilaginibacter/Rank8_unclassified Mucilaginibacter
+301	Mucilaginibacter	2	Rank7	+	b622	Rank8_unclassified Mucilaginibacter/Rank8_unclassified Mucilaginibacter
+302	Bacteroidia	1	Rank4	-	b622	Rank8_unclassified Mucilaginibacter/Rank8_unclassified Mucilaginibacter
+303	Sphingobacteriales	1	Rank5	-	b622	Rank8_unclassified Mucilaginibacter/Rank8_unclassified Mucilaginibacter
+304	Sphingobacteriaceae	1	Rank6	-	b622	Rank8_unclassified Mucilaginibacter/Rank8_unclassified Mucilaginibacter
+305	Mucilaginibacter	1	Rank7	-	b622	Rank8_unclassified Mucilaginibacter/Rank8_unclassified Mucilaginibacter
+306	Bacteroidia	2	Rank4	+	b641	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+307	Sphingobacteriales	2	Rank5	+	b641	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+308	Sphingobacteriaceae	2	Rank6	+	b641	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+309	Pedobacter	2	Rank7	+	b641	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+310	Bacteroidia	1	Rank4	-	b641	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+311	Sphingobacteriales	1	Rank5	-	b641	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+312	Sphingobacteriaceae	1	Rank6	-	b641	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+313	Pedobacter	1	Rank7	-	b641	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+314	Bacteroidia	1	Rank4	+	b642	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+315	Sphingobacteriales	1	Rank5	+	b642	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+316	Sphingobacteriaceae	1	Rank6	+	b642	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+317	Pedobacter	1	Rank7	+	b642	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+318	Bacteroidia	1	Rank4	-	b642	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+319	Sphingobacteriales	1	Rank5	-	b642	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+320	Sphingobacteriaceae	1	Rank6	-	b642	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+321	Pedobacter	1	Rank7	-	b642	Rank8_unclassified Pedobacter/Rank8_unclassified Pedobacter
+322	Gemmatimonadetes	1	Rank4	+	b650	Rank8_unclassified Gemmatimonas/Rank8_unclassified Gemmatimonas
+323	Gemmatimonadales	1	Rank5	+	b650	Rank8_unclassified Gemmatimonas/Rank8_unclassified Gemmatimonas
+324	Gemmatimonadaceae	1	Rank6	+	b650	Rank8_unclassified Gemmatimonas/Rank8_unclassified Gemmatimonas
+325	Gemmatimonas	1	Rank7	+	b650	Rank8_unclassified Gemmatimonas/Rank8_unclassified Gemmatimonas
+326	Gemmatimonadetes	4	Rank4	-	b650	Rank8_unclassified Gemmatimonas/Rank8_unclassified Gemmatimonas
+327	Gemmatimonadales	4	Rank5	-	b650	Rank8_unclassified Gemmatimonas/Rank8_unclassified Gemmatimonas
+328	Gemmatimonadaceae	4	Rank6	-	b650	Rank8_unclassified Gemmatimonas/Rank8_unclassified Gemmatimonas
+329	Gemmatimonas	4	Rank7	-	b650	Rank8_unclassified Gemmatimonas/Rank8_unclassified Gemmatimonas
